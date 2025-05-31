@@ -1,5 +1,5 @@
 //1.             ES6 Methods
-console.log("\nES6 Methods\n")
+console.log("\nES6 Methods\n");
 const inputText = "First Homework as intern in JavaScript";
 
 // includes()
@@ -69,7 +69,7 @@ const studentWeek = new Array(7).fill("Working");
 console.log(studentWeek);
 
 //2.             Difference between var, let, and const.
-console.log("\nDifference between var, let, and const\n")
+console.log("\nDifference between var, let, and const\n");
 //var - function-scoped
 //let - variables that might be reassigned
 //const -  variables that will not change
@@ -129,7 +129,7 @@ console.log(student);
 //student = {name: "hei", role: "hei"} // the reference cannot be reassigned
 
 //3.             Spread operator.
-console.log("\nSpread operator\n")
+console.log("\nSpread operator\n");
 //a) Used for shallow copy
 
 const nr = [1, 2, 3];
@@ -173,7 +173,7 @@ console.log(nextInput);
 //4.             Objects: How to iterate over an object, deep copy.
 
 //a) Iteration objects
-console.log("\nIteration objects\n")
+console.log("\nIteration objects\n");
 const studentVictoria = {
   name: "Victoria",
   age: 21,
@@ -195,7 +195,7 @@ Object.entries(student).forEach(([key, value]) => {
 //b) Deep copy
 //simple objects JSON.parse(JSON.stringify())
 //complex objects - structuredClone()
-console.log("\nDeep copy objects\n")
+console.log("\nDeep copy objects\n");
 const originDeep = {
   name: "Victoria",
   date: new Date(),
@@ -212,36 +212,36 @@ console.log(structuredCopy); // all the data remains
 //5.             Arrays - accessor, iteration, and mutator methods (which they are, how to use them).
 
 //Accessor methods that don't change the array
-console.log("\nAccessor methods\n")
+console.log("\nAccessor methods\n");
 // indexOf()
 // gets the position of word Friday
-console.log(daysOfWeek.indexOf("Friday")); 
+console.log(daysOfWeek.indexOf("Friday"));
 
 // slice()
 // creates a copy [1,4)
 const midWeek = daysOfWeek.slice(1, 4);
-console.log(midWeek); 
+console.log(midWeek);
 
 // join()
 // joins all days with a delimitator
 console.log(daysOfWeek.join(" - "));
 
 //Mutator methods  - change the original array
-console.log("\nMutator methods\n")
+console.log("\nMutator methods\n");
 // push()
 // add element at the end
 daysOfWeek.push("Thursday");
-console.log(daysOfWeek); 
+console.log(daysOfWeek);
 
 // pop()
 // remove the last day
 daysOfWeek.pop();
-console.log(daysOfWeek); 
+console.log(daysOfWeek);
 
 // splice()
 // remove 1 item at index 1 and  insert another
 daysOfWeek.splice(1, 1, "Friday");
-console.log(daysOfWeek); 
+console.log(daysOfWeek);
 
 // reverse()
 // reverses the array
@@ -249,28 +249,99 @@ daysOfWeek.reverse();
 console.log(daysOfWeek);
 
 //Iteration methods
-console.log("\nIteration methods\n")
+console.log("\nIteration methods\n");
 const numbers = [1, 2, 3, 4, 5];
 
 // forEach()
 // prints each number
-numbers.forEach(num => console.log(num)); 
+numbers.forEach((num) => console.log(num));
 
 // map()
-// change the values into double 
-const doubled = numbers.map(num => num * 2);
-console.log(doubled); 
+// change the values into double
+const doubled = numbers.map((num) => num * 2);
+console.log(doubled);
 
-// filter() 
+// filter()
 // keeps only even numbers
-const evens = numbers.filter(num => num % 2 === 0);
+const evens = numbers.filter((num) => num % 2 === 0);
 console.log(evens);
-
 
 //6.             Promises. Callback.
 
+//Callback - A function passed as an argument to another function
+function sayHiNewTeamMeat(name, callback) {
+  console.log("Hi " + name);
+  callback();
+}
+sayHiNewTeamMeat("Andrei", () => {
+  console.log("Introduced to the team");
+});
+//Promise - Object representing the eventual completion/failure of an async operation
+//3 states - pending, fulfilled, rejected
+//ex: api requests, chain multiple tasks
+const teammateIsHardworking = false;
+
+const checkTeamwork = new Promise((resolve, reject) => {
+  if (teammateIsHardworking) {
+    resolve("Finished their task on time."); // send the message to then()
+  } else {
+    reject("Delayed the task"); //sends the message to catch()
+  }
+});
+
+checkTeamwork
+  .then((message) => console.log(message))
+  .catch((error) => console.log(error));
+
 //7.             Async. Await.
+
+console.log("\nAsync. Await\n");
+//helps write asynchronous code without blocking the rest of the code execution
+//async function returns a Promise object
+//await only inside an async function, waits for the result
+function simulateTask() {
+  return new Promise(resolve => {
+    setTimeout(() => resolve("Task done!"), 1000);
+  });
+}
+
+async function runTask() {
+  console.log("Starting soon");
+  const result = await simulateTask(); 
+  console.log(result); 
+}
+runTask();
+
 
 //8.             Closures.
 
+console.log("\nClosures\n");
+// = a function that remembers the variables from its outer scope
+function sayHi(name) {
+  return function greet() {
+    console.log("Hi, " + name + "! Welcome to the internship!");
+  };
+}
+
+const greetVictoria = sayHi("Victoria");
+greetVictoria(); 
+
+function countingNumbers() {
+  let nr = 0;  //outer scope
+  return function () {
+    nr++;  // remembers the nr value
+    console.log("Nr:", nr);
+  };
+}
+
+const counting = countingNumbers();
+counting(); //1
+counting(); //2
+counting(); //3
+
 //9.             useState. useRef.
+
+//useState Hook allows us to track state in a function component
+//useRef Hook allows you to persist values between renders
+
+
