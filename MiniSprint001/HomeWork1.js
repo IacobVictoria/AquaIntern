@@ -1,5 +1,6 @@
 //1.             ES6 Methods
 console.log("\nES6 Methods\n");
+//STRINGS
 const inputText = "First Homework as intern in JavaScript";
 
 // includes()
@@ -28,7 +29,7 @@ console.log(IdNR.padStart(12, "0"));
 // adds characters at the end
 const text = "Hei";
 console.log(text.padEnd(10, "yey"));
-
+//ARRAYS
 const daysOfWeek = [
   "Monday",
   "Tuesday",
@@ -67,6 +68,14 @@ console.log(allContainA);
 // create a week full of working
 const studentWeek = new Array(7).fill("Working");
 console.log(studentWeek);
+
+//reduce()
+//combines all days into a single string separated by " | "
+const allDays = daysOfWeek.reduce((accumulator, currentDay) => {
+  return accumulator + " | " + currentDay;
+});
+
+console.log(allDays);
 
 //2.             Difference between var, let, and const.
 console.log("\nDifference between var, let, and const\n");
@@ -311,6 +320,7 @@ async function runTask() {
   console.log(result); 
 }
 runTask();
+console.log("hhh")
 
 
 //8.             Closures.
@@ -345,3 +355,7 @@ counting(); //3
 //useRef Hook allows you to persist values between renders
 
 
+
+
+
+  
