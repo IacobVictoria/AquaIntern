@@ -63,7 +63,7 @@ const ArrayMethods = () => {
 
   return (
     <div style={{ padding: "2rem", fontFamily: "Arial" }}>
-      <h2>Array Methods: Days of the Week</h2>
+      <h2>ES6 Array Methods</h2>
 
       <div style={{ marginBottom: "1rem" }}>
         <label>Input Array:</label>

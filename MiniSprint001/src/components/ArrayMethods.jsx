@@ -16,6 +16,8 @@ const ArrayMethods = () => {
       "Sunday",
     ];
 
+    logs.push("!!!!! Arrays in JavaScript are objects and are mutable, meaning their content can be changed.\n")
+
     logs.push("👉 Accessor methods (non-mutating):\n");
 
     // indexOf
@@ -80,7 +82,7 @@ const ArrayMethods = () => {
 
   return (
     <div style={{ padding: "2rem", fontFamily: "Arial" }}>
-      <h2>JS Array Accessor vs Mutator Methods</h2>
+      <h2>JavaScript Array Methods: Access, Modify & Iterate</h2>
       <div style={{ marginBottom: "1rem" }}>
         <label>Input Array:</label>
         <input

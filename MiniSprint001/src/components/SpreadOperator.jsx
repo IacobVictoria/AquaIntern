@@ -3,8 +3,28 @@ import React, { useState } from "react";
 const examples = {
   a: `a) Used for shallow copy
 
+  ! In shallow copy using spread, primitive values are copied by value, while objects are copied by reference
+
+  Primitive values
+
 const nr = [1, 2, 3];
 const nrNew = [...nr];
+nrNew[1] = 99;
+
+console.log("Original:", nr);         // 👉 [10, 20, 30]
+console.log("Copy:", nrNew);         // 👉 [10, 99, 30]
+
+  Objects inside array
+
+const student1 = [{ name: "Victoria" }, { name: "Maria" }];
+const studentCopy = [...original]; // shallow copy
+
+studentCopy[0].name = "Changed";
+
+console.log("Original:", student1);        // 👉 [{ name: "Changed" }, { name: "Maria" }]
+console.log("Copy:", studentCopy);         //👉  [{ name: "Changed" }, { name: "Maria" }]
+
+  Mix of primitive and objects with reference
 
 const obj = {
   name: "Victoria",
@@ -14,7 +34,10 @@ const obj = {
   },
 };
 const objNew = { ...obj };
-objNew.details.age = "45"; // the nested object is still referenced
+
+objNew.name ="Alex"; //String primitive is a deep copy
+objNew.details.age = "45"; // the nested object is referenced
+
 console.log(obj); // 👉 { name: "Victoria", details: { age: "45", city: "Bucharest" } }`,
 
   b: `b) Used for combining arrays/objects
@@ -24,10 +47,10 @@ const class2 = ["stud3", "stud4"];
 const allStudents = [...class1, ...class2];
 console.log(allStudents); // 👉 [ "stud1", "stud2", "stud3", "stud4" ]
 
-const stud1 = { name: "Victoria" };
+const stud1 = { name: "Victoria", age:33 };
 const stud2 = { name: "Maria" };
 const VictoriaFriend = { ...stud1, ...stud2 };
-console.log(VictoriaFriend); // 👉 { name: "Maria" } // 'Maria' overrides 'Victoria'`,
+console.log(VictoriaFriend); // 👉 { name: "Maria", age:33 } // 'Maria' overrides 'Victoria' and adds the age attribute`,
 
   c: `c) Used for passing arguments individually in functions
 

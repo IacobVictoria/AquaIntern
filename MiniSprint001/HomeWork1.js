@@ -92,7 +92,7 @@ function scope() {
   {
     let jj = 90;
   }
-  if (a < 5) {
+  if (a > 5) {
     let j = 5;
     let z = 5;
   }
@@ -106,17 +106,22 @@ scope();
 var x = 1;
 var x = 3;
 let y = 1;
-const z = 10;
-//const z;
-//let y ;
-//let y =6;  - Sintax error , cannot re declare in same scope
-
+const z = 10; // 'const' needs to be initialized
+//const z; //sintax error
+//z=15;//TypeError: Assignment to constant variable.
+y = 6;
+//let y;  - Sintax error , cannot re declare in same scope
+{
+  let y; // redeclare in other scope
+  const z = 10;
+}
 //c) In terms of hoisting
 //HOISTING  - variables moved to the top of their scope before the code is executed
 
 //Declaration is hoisted, but not the assignment
-console.log(a); // undefined
-var a = 10;
+
+console.log(newVar); // undefined
+var newVar = 10;
 
 // console.log(b); // error - ReferenceError
 let b = 20;
@@ -125,17 +130,41 @@ let b = 20;
 const c = 30;
 
 greet();
-//functions can be hoisted
+//function declarations can be hoisted
 function greet() {
   console.log("Hi!");
 }
 
+//function expression
+//sayHi(); // called before definition- ReferenceError
+const sayHi = function () {
+  console.log("Hi!");
+};
+
+//Arrow Function
+//sayHiLambda(); // called before definition- ReferenceError
+const sayHiLambda = () => {
+  console.log("Hi again!");
+};
+
 //d) In terms of objects modification - const
+
+//Object
 
 const student = { name: "Victoria", role: "Student" };
 student.name = "Victoria Iacob";
 console.log(student);
 //student = {name: "hei", role: "hei"} // the reference cannot be reassigned
+
+//Array
+
+const numbersArray = [1, 2, 3];
+numbersArray.push(4);
+numbersArray[0] = 99;
+console.log(numbersArray);
+//Result: [99, 2, 3, 4]
+
+// numbersArray = [5, 6, 7]; // TypeError: Assignment to constant variable
 
 //3.             Spread operator.
 console.log("\nSpread operator\n");
@@ -143,6 +172,10 @@ console.log("\nSpread operator\n");
 
 const nr = [1, 2, 3];
 const nrNew = [...nr];
+
+nrNew[1] = 30;//working with primitives
+console.log('orginal '+nr);
+console.log('copy '+nrNew)
 
 const obj = {
   name: "Victoria",
@@ -152,6 +185,7 @@ const obj = {
   },
 };
 const objNew = { ...obj };
+objNew.name ="Alex";
 objNew.details.age = "45"; // the nested object is still referenced
 console.log(obj);
 
@@ -161,7 +195,7 @@ const class2 = ["stud3", "stud4"];
 const allStudents = [...class1, ...class2];
 console.log(allStudents);
 
-const stud1 = { name: "Victoria" };
+const stud1 = { name: "Victoria", age:33 };
 const stud2 = { name: "Maria" };
 const VictoriaFriend = { ...stud1, ...stud2 };
 console.log(VictoriaFriend); //overrides
@@ -285,6 +319,41 @@ function sayHiNewTeamMeat(name, callback) {
 sayHiNewTeamMeat("Andrei", () => {
   console.log("Introduced to the team");
 });
+
+const registerStudent = (student, callback) => {
+  console.log("Registering student...");
+  setTimeout(() => {
+    callback();
+  }, 1000);
+};
+
+const assignCourse = (student, callback) => {
+  console.log("Assigning course...");
+  setTimeout(() => {
+    callback();
+  }, 1000);
+};
+
+const sendWelcomeEmail = (student, callback) => {
+  console.log("Sending welcome email...");
+  setTimeout(() => {
+    callback();
+  }, 1000);
+};
+
+// Callback Hell
+const processStudent = (student) => {
+  registerStudent(student, () => {
+    assignCourse(student, () => {
+      sendWelcomeEmail(student, () => {
+        console.log("Everything is fine!");
+      });
+    });
+  });
+};
+
+processStudent("Victoria");
+
 //Promise - Object representing the eventual completion/failure of an async operation
 //3 states - pending, fulfilled, rejected
 //ex: api requests, chain multiple tasks
@@ -309,37 +378,36 @@ console.log("\nAsync. Await\n");
 //async function returns a Promise object
 //await only inside an async function, waits for the result
 function simulateTask() {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     setTimeout(() => resolve("Task done!"), 1000);
   });
 }
 
 async function runTask() {
   console.log("Starting soon");
-  const result = await simulateTask(); 
-  console.log(result); 
+  const result = await simulateTask();
+  console.log(result);
 }
 runTask();
-console.log("hhh")
-
+console.log("hhh");
 
 //8.             Closures.
 
 console.log("\nClosures\n");
 // = a function that remembers the variables from its outer scope
-function sayHi(name) {
+function sayHiClosure(name) {
   return function greet() {
     console.log("Hi, " + name + "! Welcome to the internship!");
   };
 }
 
-const greetVictoria = sayHi("Victoria");
-greetVictoria(); 
+const greetVictoria = sayHiClosure("Victoria");
+greetVictoria();
 
 function countingNumbers() {
-  let nr = 0;  //outer scope
+  let nr = 0; //outer scope
   return function () {
-    nr++;  // remembers the nr value
+    nr++; // remembers the nr value
     console.log("Nr:", nr);
   };
 }
@@ -353,9 +421,3 @@ counting(); //3
 
 //useState Hook allows us to track state in a function component
 //useRef Hook allows you to persist values between renders
-
-
-
-
-
-  

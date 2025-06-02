@@ -10,16 +10,6 @@ import AsyncAwaitComponent from "./components/AsyncAwaitComponent";
 import ClosureComponent from "./components/ClosureComponent";
 
 function App() {
-  function createDoneTracker() {
-    let completedCount = 0;
-
-    return function () {
-      completedCount++;
-      console.log(`You completed ${completedCount} task(s)! 🎯`);
-    };
-  }
-
-  const handleDone = createDoneTracker();
   return (
     <div>
       <h1
