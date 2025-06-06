@@ -25,7 +25,7 @@ Hotel.init(
     },
     SourcePropertyID: {
       type: DataTypes.STRING(50),
-      allowNull: true,
+      allowNull: false,
     },
     GlobalPropertyName: {
       type: DataTypes.STRING(255),
@@ -33,11 +33,11 @@ Hotel.init(
     },
     GlobalChainCode: {
       type: DataTypes.STRING(10),
-      allowNull: true,
+      allowNull: false,
     },
     PropertyAddress1: {
       type: DataTypes.TEXT,
-      allowNull: true,
+      allowNull: false,
     },
     PropertyAddress2: {
       type: DataTypes.TEXT,
@@ -45,11 +45,11 @@ Hotel.init(
     },
     PrimaryAirportCode: {
       type: DataTypes.STRING(10),
-      allowNull: true,
+      allowNull: false,
     },
     CityID: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       references: {
         model: "Cities",
         key: "CityID",
@@ -57,7 +57,7 @@ Hotel.init(
     },
     PropertyStateProvinceID: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       references: {
         model: "Regions",
         key: "PropertyStateProvinceID",
@@ -65,11 +65,11 @@ Hotel.init(
     },
     PropertyZipPostal: {
       type: DataTypes.STRING(20),
-      allowNull: true,
+      allowNull: false,
     },
     PropertyPhoneNumber: {
       type: DataTypes.STRING(50),
-      allowNull: true,
+      allowNull: false,
     },
     PropertyFaxNumber: {
       type: DataTypes.STRING(50),
@@ -77,19 +77,19 @@ Hotel.init(
     },
     SabrePropertyRating: {
       type: DataTypes.DECIMAL(3, 1),
-      allowNull: true,
+      allowNull: false,
     },
     PropertyLatitude: {
       type: DataTypes.DECIMAL(9, 6),
-      allowNull: true,
+      allowNull: false,
     },
     PropertyLongitude: {
       type: DataTypes.DECIMAL(9, 6),
-      allowNull: true,
+      allowNull: false,
     },
     SourceGroupCode: {
       type: DataTypes.STRING(10),
-      allowNull: true,
+      allowNull: false,
     },
   },
   {
