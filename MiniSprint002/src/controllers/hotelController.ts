@@ -7,6 +7,9 @@ const { Hotel, City, Region } = db;
  *
  * Limits the result to 10 entries to avoid overloading the client.
  *
+ * 200 OK with JSON hotel data
+ * 500 Internal Server Error on failure
+ * 
  * @param {Request} req - Express request object
  * @param {Response} res - Express response object
  * @returns {Promise<void>} Responds with JSON data or error message
@@ -26,7 +29,7 @@ export const getAllHotels = async (
 
     res.status(200).json(hotels);
   } catch (error) {
-    res.status(500).json({ error: "Failed to retrieve hotels." }); //internal error status
+    res.status(500).json({ error: "Failed to retrieve hotels." }); 
   }
 };
 

@@ -1,6 +1,5 @@
 import { param } from "express-validator";
-import Hotel from "@models/Hotel"; // folosește alias dacă ai setat baseUrl/paths în tsconfig
-import { Request, Response, NextFunction } from "express";
+import Hotel from "@models/Hotel"; 
 
 /**
  * Middleware to check if hotel exists before deleting

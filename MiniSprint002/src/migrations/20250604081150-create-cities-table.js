@@ -4,7 +4,7 @@
 module.exports = {
   async up (queryInterface, Sequelize) {
    await queryInterface.createTable('Cities', {
-      CityID: { //Primary Key autoIncrement
+      CityID: { 
         type: Sequelize.INTEGER,
         primaryKey: true,
         allowNull: false,

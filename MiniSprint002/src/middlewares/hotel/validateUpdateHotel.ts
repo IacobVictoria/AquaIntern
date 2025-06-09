@@ -1,8 +1,18 @@
-import { body } from "express-validator";
+import { body, param } from "express-validator";
 import City from "@models/City";
 import Region from "@models/Region";
+import Hotel from "@models/Hotel";
 
 export const validateUpdateHotel = [
+  param("id")
+    .isInt({ gt: 0 })
+    .withMessage("Hotel ID must be a positive integer")
+    .custom(async (value) => {
+      const hotel = await Hotel.findByPk(value);
+      if (!hotel) {
+        return Promise.reject("Hotel with this ID does not exist.");
+      }
+    }),
   body("GlobalPropertyName")
     .optional()
     .isString()
@@ -39,7 +49,7 @@ export const validateUpdateHotel = [
         );
       }
     }),
-    
+
   body("PropertyZipPostal").optional().isString(),
 
   body("PropertyPhoneNumber").optional().isString(),
