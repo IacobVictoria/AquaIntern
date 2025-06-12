@@ -2,12 +2,16 @@ import sequelize from '../config/database';
 import Hotel from './Hotel';
 import City from './City';
 import Region from './Region';
+import HotelReview from './HotelReview';
+import User from './User';
 
 const db: any = {
   sequelize,
   Hotel,
   City,
   Region,
+  HotelReview,
+  User
 };
 
 // associate methods for each model

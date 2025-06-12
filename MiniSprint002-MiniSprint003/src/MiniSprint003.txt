@@ -1,0 +1,78 @@
+Flow
+
+- City Bucharest in Cities table
+SELECT * FROM public."Cities"
+WHERE "Country" = 'RO'
+ORDER BY "CityID" ASC;
+
+
+- Record in Regions table does not exist
+SELECT * FROM public."Hotels"
+where "CityID" = 39206
+ORDER BY "GlobalPropertyID" ASC 
+
+- Look if the wanting hotel exists in hotels from csv
+SELECT * FROM public."Hotels"
+where "GlobalPropertyName" = 'Caro Hotel'
+ORDER BY "GlobalPropertyID" ASC 
+
+//
+
+  id: 'sag2nOAZERIGZVIwZ',
+  actId: 'Hvp4YfFGyLM635Q2F',
+  userId: 'fbd75a0TqgsSQ97md',
+  startedAt: 2025-06-11T13:58:26.201Z,
+  finishedAt: 2025-06-11T13:58:32.069Z,
+  status: 'SUCCEEDED',                                                          // statusul actiunii 
+  statusMessage: 'Finished! Total 2 requests: 2 succeeded, 0 failed.',
+  isStatusMessageTerminal: true,
+  options: {
+    build: 'latest',
+    timeoutSecs: 604800,
+    memoryMbytes: 2048,
+    maxItems: 1139,
+    diskMbytes: 4096
+  },
+  buildId: '4GGbIWPSLkkdGQ1CO',
+  exitCode: 0,
+  defaultKeyValueStoreId: 'u4G89feTVdxGhPrAk',
+  defaultDatasetId: 'HmNwy2yhzlItK7TqO',                            // ID-ul datasetului cu datele rezultate
+  defaultRequestQueueId: 'sE6fmLyoJjQ3BJUaI',
+
+//
+user: {
+  userId: '200642D63AEEE5B775BA97FCE108A94D',
+  name: 'Nina p',
+  username: 'F2300OTninap',
+  link: 'www.tripadvisor.com/Profile/F2300OTninap'
+}
+
+//
+placeInfo: {
+  id: '324571',
+  name: 'Caro Hotel',
+  rating: 4.6,
+  numberOfReviews: 300,
+  locationString: 'Bucharest',
+  latitude: 44.47436,
+  longitude: 26.10826,
+  webUrl: 'https://www.tripadvisor.com/Hotel_Review-g294458-d324571-Reviews-Caro_Hotel-Bucharest.html',
+  website: 'http://carohotel.ro',
+  address: '164A Barbu Vacarescu Blvd, Bucharest 020285 Romania'
+}
+
+//
+{
+  id: '922627238',
+  title: 'Awesome hotel',
+  text: 'My husband and I have been guests',
+  rating: 5,
+  publishedDate: '2023-10-23',
+  travelDate: '2023-05',
+  tripType: 'COUPLES',
+  photos: [...],
+  subratings: [...],
+  user: {...},
+  placeInfo: {...}
+}
+

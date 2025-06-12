@@ -12,6 +12,11 @@ class Hotel extends Model {
       foreignKey: "PropertyStateProvinceID",
       as: "region",
     });
+
+    Hotel.hasMany(models.HotelReview, {
+      foreignKey: "hotel_id",
+      as: "reviews",
+    });
   }
 }
 
@@ -25,19 +30,19 @@ Hotel.init(
     },
     SourcePropertyID: {
       type: DataTypes.STRING(50),
-      allowNull: false,
+      allowNull: true,
     },
     GlobalPropertyName: {
       type: DataTypes.STRING(255),
-      allowNull: false,
+      allowNull: true,
     },
     GlobalChainCode: {
       type: DataTypes.STRING(10),
-      allowNull: false,
+      allowNull: true,
     },
     PropertyAddress1: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
     },
     PropertyAddress2: {
       type: DataTypes.TEXT,
@@ -45,11 +50,11 @@ Hotel.init(
     },
     PrimaryAirportCode: {
       type: DataTypes.STRING(10),
-      allowNull: false,
+      allowNull: true,
     },
     CityID: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: "Cities",
         key: "CityID",
@@ -57,7 +62,7 @@ Hotel.init(
     },
     PropertyStateProvinceID: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: "Regions",
         key: "PropertyStateProvinceID",
@@ -65,11 +70,11 @@ Hotel.init(
     },
     PropertyZipPostal: {
       type: DataTypes.STRING(20),
-      allowNull: false,
+      allowNull: true,
     },
     PropertyPhoneNumber: {
       type: DataTypes.STRING(50),
-      allowNull: false,
+      allowNull: true,
     },
     PropertyFaxNumber: {
       type: DataTypes.STRING(50),
@@ -77,19 +82,19 @@ Hotel.init(
     },
     SabrePropertyRating: {
       type: DataTypes.DECIMAL(3, 1),
-      allowNull: false,
+      allowNull: true,
     },
     PropertyLatitude: {
       type: DataTypes.DECIMAL(9, 6),
-      allowNull: false,
+      allowNull: true,
     },
     PropertyLongitude: {
       type: DataTypes.DECIMAL(9, 6),
-      allowNull: false,
+      allowNull: true,
     },
     SourceGroupCode: {
       type: DataTypes.STRING(10),
-      allowNull: false,
+      allowNull: true,
     },
   },
   {
